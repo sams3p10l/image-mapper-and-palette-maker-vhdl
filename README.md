@@ -3,7 +3,7 @@ Python script for mapping pixels of given image to their hex RGBA values and for
 
 ## Usage:
 Put script in a folder with all the images you want processed and start the script.
+Output file is opened in append mode so you have to delete the output.txt file before using the script again.
 
-### Dependencies
-
+### Dependencies:
 Pillow - Python Imaging Library
