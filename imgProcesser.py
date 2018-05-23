@@ -1,23 +1,22 @@
 from PIL import Image
 import os
 
-iterator = 0
+iterator = 0    #set iterator to 255 if you are copying maps after palette in VHDL file, palette ends with number 254
 
 fileList = []
 fileList = os.listdir()
+f = open('output.txt', 'a+')
 
 for i in range(len(fileList)):
     ext = fileList[i][-4:]
     if  ext == '.bmp' or ext == '.jpg' or ext == '.png':
         image = Image.open(fileList[i])
-        image = image.convert('RGB')
+        image = image.convert('RGBA')
         pixel = image.load()
 
         pixelTuples = []
         pixelList = []
         output = ""
-
-        f = open('output.txt', 'a+')
 
         for x_pos in range(image.size[0]):
             for y_pos in range(image.size[1]):

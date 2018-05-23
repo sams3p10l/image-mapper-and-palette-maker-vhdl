@@ -7,18 +7,14 @@ data = ""
 dataList = []
 dataHist = {}
 
-palette = [00000000]*255
+palette = ["00000000"]*255
 
 inputList = os.listdir()
 
 for i in range(len(inputList)):
     if inputList[i] == 'output.txt':
         with open(inputList[i], 'r') as myfile:
-            if i != len(inputList) - 1:
-                data += myfile.read().replace('"', "").replace(',', "")
-                data += '\n'
-            else:
-                data += myfile.read().replace('"', "").replace(',', "")
+            data += myfile.read().replace('"', "").replace(',', "")
 
 dataList = data.split('\n')
 dataList.remove("")
@@ -51,8 +47,12 @@ else:
 f = open("palette.txt", 'a+')
 
 for i in range(len(palette)):
-    paletteString = str(i) + ' => x"' + str(palette[i]) + '",\n'
+    if i != len(palette) - 1:
+        paletteString = str(i) + ' => x"' + str(palette[i]) + '",\n'
+    else:
+        paletteString = str(i) + ' => x"' + str(palette[i]) + '"'
     f.write(paletteString)
 
+print(data)
 f.close()
 print("Palette generated successfully")
